@@ -1,7 +1,10 @@
-export default function App(){
-  return(
+import Header from "./components/Header/Header";
+import "./App.css";
+
+export default function App() {
+  return (
     <div>
-    Hello World!
+      <Header />
     </div>
   );
 }
