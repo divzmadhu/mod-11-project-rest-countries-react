@@ -7,10 +7,12 @@ import type { Country } from "./types/Country";
 import CountryList from "./components/CountryList/CountryList";
 import CountryDetails from "./components/CountryDetails/CountryDetails";
 import { mapApiCountry } from "./utils/countryMapper";
+import useDebounce from "./hooks/useDebounce";
 
 import "./App.css";
 
 export default function App() {
+
   const [countries, setCountries] = useState<Country[]>([]);
 
   // Tracks whether the country data is still loading
@@ -20,6 +22,14 @@ export default function App() {
   const [error, setError] = useState("");
 
   const [searchTerm, setSearchTerm] = useState("");
+
+  // Delays country filtering until the user stops typing for 500 milliseconds
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
+  useEffect(() => {
+    console.log("Debounced search:", debouncedSearchTerm);
+  }, [debouncedSearchTerm]);
+
   // Stores the region selected by the user
   const [selectedRegion, setSelectedRegion] = useState("");
 
