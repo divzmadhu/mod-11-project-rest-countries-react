@@ -2,11 +2,12 @@ import type { Country } from "../../types/Country";
 
 interface CountryCardProps {
     country: Country;
+    onClick: () => void;
 }
 
-export default function CountryCard({ country }: CountryCardProps) {
+export default function CountryCard({ country, onClick }: CountryCardProps) {
     return (
-        <div className="country-card">
+        <div className="country-card" onClick={onClick}>
             {country.flags.svg && (
                 <img src={country.flags.svg} alt={`${country.name} flag`} />
             )}
