@@ -1,12 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Header() {
-    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(() => {
+        return localStorage.getItem("theme") === "dark";
+    });
+
+    // Updates the page theme and saves the preference
+    useEffect(() => {
+        document.body.classList.toggle("dark-mode", isDarkMode);
+
+        localStorage.setItem(
+            "theme",
+            isDarkMode ? "dark" : "light"
+        );
+    }, [isDarkMode]);
 
     // Toggle between dark and light themes
     function toggleTheme() {
-        setIsDarkMode(!isDarkMode);
-        document.body.classList.toggle("dark-mode");
+        setIsDarkMode(previous => !previous);
     }
     return (
         <header className="header">
