@@ -11,9 +11,20 @@ import "./App.css";
 export default function App() {
   const [countries, setCountries] = useState<Country[]>(countryData);
   const [searchTerm, setSearchTerm] = useState("");
-  const filteredCountries = countries.filter((country) =>
-    country.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Stores the region selected by the user
+  const [selectedRegion, setSelectedRegion] = useState("");
+
+  // Filter countries based on search text and selected region
+  const filteredCountries = countries.filter((country) => {
+    const matchesSearch = country.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    const matchesRegion = selectedRegion === "" ||
+      country.region === selectedRegion;
+
+    return matchesSearch && matchesRegion;
+  });
   return (
     <div>
       <Header />
@@ -23,7 +34,10 @@ export default function App() {
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
         />
-        <RegionFilter />
+        <RegionFilter
+          selectedRegion={selectedRegion}
+          onRegionChange={setSelectedRegion}
+        />
       </div>
       <CountryList countries={filteredCountries} />
     </div>
