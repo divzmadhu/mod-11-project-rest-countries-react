@@ -11,6 +11,7 @@ import "./App.css";
 
 export default function App() {
   const [countries, setCountries] = useState<Country[]>(countryData);
+  
   const [searchTerm, setSearchTerm] = useState("");
   // Stores the region selected by the user
   const [selectedRegion, setSelectedRegion] = useState("");
@@ -35,7 +36,9 @@ export default function App() {
       {selectedCountry ? (
         <CountryDetails
           country={selectedCountry}
+          countries={countries}
           onBack={() => setSelectedCountry(null)}
+          onCountryClick={setSelectedCountry}
         />
       ) : (
         <>

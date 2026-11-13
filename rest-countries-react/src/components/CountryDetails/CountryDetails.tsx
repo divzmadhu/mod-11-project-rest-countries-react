@@ -2,13 +2,15 @@ import type { Country } from "../../types/Country";
 
 interface CountryDetailsProps {
     country: Country;
+    countries: Country[];
     onBack: () => void;
+    onCountryClick: (country: Country) => void;
 }
 
-export default function CountryDetails({ country, onBack }: CountryDetailsProps) {
+export default function CountryDetails({ country, countries, onBack, onCountryClick }: CountryDetailsProps) {
     return (
         <div id="country-details">
-            <button onClick={onBack}>← Back</button>
+            <button className="back-button" onClick={onBack}>← Back</button>
 
             <div className="country-details-content">
                 <img src={country.flags.svg} alt={`${country.name} flag`} />
@@ -37,16 +39,26 @@ export default function CountryDetails({ country, onBack }: CountryDetailsProps)
                     </p>
                 </div>
 
-                // Displays the countries sharing a border with the selected country
+                {/* Displays the countries sharing a border with the selected country */}
                 <div className="border-countries">
-                    <strong>Border Countries:</strong>
+                    <strong>Border Countries:</strong>{" "}
 
                     {country.borders.length > 0 ? (
-                        country.borders.map((border) => (
-                            <span key={border} className="border-country">
-                                {border}
-                            </span>
-                        ))
+                        country.borders.map((border) => {
+                            const borderCountry = countries.find(
+                                (item) => item.alpha3Code === border
+                            );
+
+                            return borderCountry ? (
+                                <button
+                                    key={border}
+                                    className="border-country"
+                                    onClick={() => onCountryClick(borderCountry)}
+                                >
+                                    {borderCountry.name}
+                                </button>
+                            ) : null;
+                        })
                     ) : (
                         <span>No bordering countries</span>
                     )}

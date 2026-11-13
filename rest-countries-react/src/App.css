@@ -173,6 +173,7 @@ header h1 {
     font-size: 0.95rem;
     font-weight: 600;
     margin: 0 0 12px 0;
+    color: var(--very-dark-blue-text);
 
 }
 
@@ -241,7 +242,9 @@ body.dark-mode header,
 body.dark-mode .country-card,
 body.dark-mode .search-container input,
 body.dark-mode .dropdown-toggle,
-body.dark-mode .dropdown-menu {
+body.dark-mode .dropdown-menu,
+body.dark-mode .border-country,
+body.dark-mode .back-button {
     background-color: var(--dark-blue);
     color: var(--white);
 }
@@ -249,7 +252,10 @@ body.dark-mode .dropdown-menu {
 /* Dark mode heading and country information */
 body.dark-mode header h1,
 body.dark-mode .theme-toggle,
-body.dark-mode .card-body p {
+body.dark-mode .card-body h2,
+body.dark-mode .card-body p,
+body.dark-mode .country-info, 
+body.dark-mode .country-details-content {
     color: var(--white);
 }
 
@@ -265,15 +271,52 @@ body.dark-mode .dropdown-menu li.selected {
 }
 
 
-/* Border country buttons */
+
+
+/* Border country buttons - Light Mode */
 .border-country {
     margin: 5px;
+    padding: 6px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--white);
+    color: var(--very-dark-blue-text);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-family: inherit;
 }
+
+.back-button {
+    background-color: var(--white);
+    color: var(--very-dark-blue-text);
+    border: none;
+    padding: 8px 24px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
 
 
 /* Country details page layout */
 #country-details {
     padding: 30px 40px;
+}
+
+.country-details-content {
+    text-align: left;
+}
+
+.country-info {
+    color: #111517;
+}
+
+.country-info p {
+    margin: 0 0 8px;
+}
+
+.country-info strong {
+    font-weight: 700;
 }
 
 /* Country details page flag */
@@ -298,11 +341,6 @@ input:focus-visible,
 }
 
 
-.country-card p {
-    font-size: 14px;
-    margin: 0 0 8px;
-    padding-left: 20px;
-} 
 
 .country-card h3 {
     font-size: 17px;
@@ -310,12 +348,12 @@ input:focus-visible,
     margin: 0 0 10px;
 }
 
-.country-card p {
-    font-size: 13px;
-    padding-left: 20px;
-    margin: 0 0 6px;
-}
 
+.no-results {
+    margin-left: 60px;
+    text-align: left;
+    width: 100%;
+}
 
 /* Responsive Design */
 
