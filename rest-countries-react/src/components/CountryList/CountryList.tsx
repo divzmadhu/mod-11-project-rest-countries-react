@@ -8,9 +8,16 @@ interface CountryListProps {
 export default function CountryList({ countries }: CountryListProps) {
     return (
         <div className="display-container">
-            {countries.map((country) => (
-                <CountryCard key={country.alpha3Code || country.name} country={country} />
-            ))}
+            {countries.length > 0 ? (
+                countries.map((country) => (
+                    <CountryCard
+                        key={country.alpha3Code || country.name}
+                        country={country}
+                    />
+                ))
+            ) : (
+                <p className ="no-results">No countries found. Please try another search.</p>
+            )}
         </div>
     );
 }

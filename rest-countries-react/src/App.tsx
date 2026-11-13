@@ -10,15 +10,22 @@ import "./App.css";
 
 export default function App() {
   const [countries, setCountries] = useState<Country[]>(countryData);
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredCountries = countries.filter((country) =>
+    country.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   return (
     <div>
       <Header />
       <p>Total countries: {countries.length}</p>
       <div className="input-container">
-        <SearchBar />
+        <SearchBar
+          searchTerm={searchTerm}
+          onSearchChange={setSearchTerm}
+        />
         <RegionFilter />
       </div>
-      <CountryList countries={countries} />
+      <CountryList countries={filteredCountries} />
     </div>
   );
 }
