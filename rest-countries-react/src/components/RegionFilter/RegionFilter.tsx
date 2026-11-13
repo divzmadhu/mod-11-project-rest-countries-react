@@ -20,11 +20,11 @@ export default function RegionFilter({ selectedRegion, onRegionChange }: RegionF
                 </button>
 
                 <ul className="dropdown-menu" hidden={!isOpen}>
-                    {["Filter By Region", "Africa", "Americas", "Asia", "Europe", "Oceania"].map((region) => (
+                    {["All Regions", "Africa", "Americas", "Asia", "Europe", "Oceania"].map((region) => (
                         <li
                             key={region}
                             onClick={() => {
-                                onRegionChange(region === "Filter By Region" ? "" : region);
+                                onRegionChange(region === "All Regions" ? "" : region);
                                 setIsOpen(false);
                             }}
                         >
