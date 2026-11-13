@@ -270,7 +270,11 @@ body.dark-mode .dropdown-menu li.selected {
     font-weight: 800;
 }
 
-
+/* Dark mode search icon and placeholder */
+body.dark-mode .search-container .fa-magnifying-glass,
+body.dark-mode .search-container input::placeholder {
+    color: var(--white);
+}
 
 
 /* Border country buttons - Light Mode */
