@@ -73,6 +73,9 @@ I extended the application by introducing additional React concepts and function
   - Used `useEffect` to apply the selected theme by adding or removing the `dark-mode` CSS class on the document body.
   - Used `setTheme` to switch between light and dark modes.
 
+
+
+
 ## Learning and Implementation
 
 While reusing the existing application structure, I focused on understanding how the components worked, how data flowed between them through props, and how the new functionality could be added while preserving the existing features.
@@ -146,6 +149,33 @@ The `map()` method is used to display multiple country cards from the country da
 - **useLocalStorage:** A reusable generic hook that stores and retrieves values from browser localStorage. It is used to remember the user's selected theme even after refreshing the page.
 - **useDebounce:** A reusable generic hook that delays updating a value until the user stops changing it for a specified amount of time. It is used in the country search to delay filtering until the user pauses typing.
 
+### 10. Responsive Design 
+
+**File:** `src/App.css`
+
+The application uses CSS styling and media queries to adjust the layout for different screen sizes.
+
+I checked the basic responsive behavior of the application and verified that the main interface remains usable at smaller viewport sizes.
+
+The responsive checks included:
+
+- **Header:** Checked that the application title and theme switcher remain visible and properly positioned.
+- **Search Bar:** Checked that the search input fits within the available screen width.
+- **Region Filter:** Checked that the region dropdown remains visible and usable.
+- **Country Listing:** Checked that country cards adjust to the available screen width without causing horizontal overflow.
+- **Country Details:** Checked that the country flag, information, and border-country buttons remain readable and usable.
+
+The responsive styling helps maintain a consistent layout and user experience across different screen sizes.
+
+### 11. Theme Switcher and Context API
+
+**Files:** `src/context/ThemeContext.tsxx` , `src/main.tsx`,  `src/components/Header/Header.tsx`,  `src/hooks/useLocalStorage.ts`
+
+- **Light/Dark Theme Switcher:** Allows users to switch between light and dark themes.
+- **Context API:** Uses `ThemeContext` to share the selected theme and `toggleTheme` function across the application.
+- **Theme Persistence:** Uses the `useLocalStorage` custom hook to remember the selected theme after a browser refresh.
+
+
 ## Challenges Faced and How I Resolved Them
 
 ### 1. Integrating the REST Countries API
@@ -172,5 +202,54 @@ Initially, I needed a way to avoid running the country filter immediately after 
 
 I created the `useDebounce` custom hook using `useState`, `useEffect`, `setTimeout`, and `clearTimeout`. This delays filtering until the user pauses typing, making the search behavior more efficient.
 
+
+## Testing Completed
+
+Performed functional testing of the application's main features to verify that they work as expected.
+
+- **API Integration:** Verified that country data is successfully retrieved from the REST Countries API.
+- **Pagination:** Verified that all 254 countries are retrieved across multiple API requests.
+- **Country Search:** Tested searching by country name and verified the debounced search behavior.
+- **Region Filtering:** Checked that selecting a region displays the corresponding countries.
+- **Country Details:** Tested opening individual country details and navigating between neighboring countries.
+- **Theme Switcher:** Tested switching between light and dark themes.
+- **Theme Persistence:** Verified that the selected theme remains active after refreshing the browser.
+- **Context API:** Tested that the theme functionality continues to work after implementing ThemeContext and ThemeProvider.
+- **Responsive Design:** Checked the basic layout and usability at smaller screen sizes.
+- **Production Build:** Ran `npm run build` successfully, with no TypeScript compilation errors.
+
+
+## Deployment
+
+**Platform:** Vercel
+
+**Deployment Status:** Pending
+
+The application will be deployed to Vercel.
+
+Before deployment:
+- Configure the `API_Key` environment variable for the Production environment in Vercel.
+- Verify that the serverless API function can access the key using `process.env.API_Key`.
+
+After successful deployment:
+- Add the live application URL to this section.
+- Verify that country data loads, search and region filtering work, and the theme switcher persists after refreshing the page.
+
+Application Screenshots
+
+Light Mode
+
+![REST Countries Explorer - Light Mode](./screenshots/light_mode.png)
+
+
+
+Dark Mode
+![REST Countries Explorer - Light Mode](./screenshots/dark_mode.png)
+
+
+
+
+Country Details
+![REST Country Information - Light Mode](./screenshots/country.png)
 
 ```

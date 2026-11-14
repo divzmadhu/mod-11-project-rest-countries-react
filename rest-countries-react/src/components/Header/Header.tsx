@@ -1,25 +1,11 @@
-import { useState, useEffect } from "react";
+import { useTheme } from "../../context/ThemeContext";
 
 export default function Header() {
-    const [isDarkMode, setIsDarkMode] = useState(() => {
-        return localStorage.getItem("theme") === "dark";
-    });
 
-    // Updates the page theme and saves the preference
-    useEffect(() => {
-        document.body.classList.toggle("dark-mode", isDarkMode);
+    // Get the current theme state and toggle function from ThemeContext
+    const { isDarkMode, toggleTheme } = useTheme();
 
-        localStorage.setItem(
-            "theme",
-            isDarkMode ? "dark" : "light"
-        );
-    }, [isDarkMode]);
-
-    // Toggle between dark and light themes
-    function toggleTheme() {
-        setIsDarkMode(previous => !previous);
-    }
-    return (
+       return (
         <header className="header">
             <div className="header-container">
                 <h1>Where in the world?</h1>
@@ -28,11 +14,7 @@ export default function Header() {
                     <i className={`fa-regular ${isDarkMode ? "fa-sun" : "fa-moon"}`}></i>
                     <span>{isDarkMode ? "Light Mode" : "Dark Mode"}</span>
                 </button>
-
-                {/* <button className="theme-toggle">
-                    <i className="fa-regular fa-moon"></i>
-                    <span>Dark Mode</span>
-                </button> */}
+                
             </div>
         </header>
     );
