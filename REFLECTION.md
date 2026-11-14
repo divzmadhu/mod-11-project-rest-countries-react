@@ -201,6 +201,16 @@ Initially, I needed a way to avoid running the country filter immediately after 
 
 I created the `useDebounce` custom hook using `useState`, `useEffect`, `setTimeout`, and `clearTimeout`. This delays filtering until the user pauses typing, making the search behavior more efficient.
 
+### 5. Github Repository Structure  and Vecel Deployment
+
+One challenge I encountered was organizing my project files correctly in the GitHub repository. Initially, all my React project files were inside an additional nested folder. Although the application worked, I wanted to move the files directly to the repository root for a cleaner project structure.
+
+After moving the files and pushing the changes to GitHub, my Vercel deployment failed because it was still configured to look for the project inside the old folder.
+
+I investigated the issue and realized that Vercel's Root Directory setting needed to be updated. I changed it to the repository root and successfully deployed the application again.
+
+This experience helped me understand how GitHub repository structure and Vercel deployment configuration work together. I also learned that a project can build successfully locally but still encounter deployment issues because of configuration differences.
+
 
 ## Testing Completed
 
