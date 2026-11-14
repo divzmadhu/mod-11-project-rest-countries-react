@@ -223,30 +223,28 @@ Performed functional testing of the application's main features to verify that t
 
 **Platform:** Vercel
 
-**Deployment Status:** Pending
+**Deployment Status:**  SuSuccessfully Deployed using Vercel
 
-The application will be deployed to Vercel.
+**Live Demo:**
 
-Before deployment:
-- Configure the `API_Key` environment variable for the Production environment in Vercel.
-- Verify that the serverless API function can access the key using `process.env.API_Key`.
+[View REST Countries Application](https://mod-11-project-rest-countries-react-hwgxfvrew-code-dj.vercel.app/)
 
-After successful deployment:
-- Add the live application URL to this section.
-- Verify that country data loads, search and region filtering work, and the theme switcher persists after refreshing the page.
 
-Application Screenshots
+- Verified that country data loads, search and region filtering work, and the theme switcher persists after refreshing the page.
 
-Light Mode
+## Application Screenshots
+
+### Light Mode
 
 ![REST Countries Explorer - Light Mode](./screenshots/light_mode.png)
 
+### Dark Mode
 
+![REST Countries Explorer - Dark Mode](./screenshots/dark_mode.png)
 
-Dark Mode
-![REST Countries Explorer - Light Mode](./screenshots/dark_mode.png)
+### Country Details
 
-
+![REST Country Information](./screenshots/country.png)
 
 
 Country Details
