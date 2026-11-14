@@ -1,4 +1,3 @@
-```markdown
 ### REST Countries Explorer
 
 ## Project Overview
@@ -245,9 +244,3 @@ Performed functional testing of the application's main features to verify that t
 ### Country Details
 
 ![REST Country Information](./screenshots/country.png)
-
-
-Country Details
-![REST Country Information - Light Mode](./screenshots/country.png)
-
-```
